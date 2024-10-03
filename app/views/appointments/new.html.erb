@@ -1,0 +1,15 @@
+<h1>Schedule a Cuddle Session for <%= @customer.name %></h1>
+
+<%= form_with model: [@customer, @appointment], local: true do |form| %>
+  <div>
+    <%= form.label :animal_id, 'Choose an Animal' %>
+    <%= form.collection_select :animal_id, @animals, :id, :name %>
+  </div>
+  <div>
+    <%= form.label :scheduled_at, 'Select Time' %>
+    <%= form.datetime_select :scheduled_at %>
+  </div>
+  <div>
+    <%= form.submit 'Schedule Appointment' %>
+  </div>
+<% end %>

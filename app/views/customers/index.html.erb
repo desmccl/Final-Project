@@ -1,0 +1,10 @@
+<h1>All Customers</h1>
+<%= link_to 'Add New Customer', new_customer_path, class: 'btn btn-primary' %>
+
+<ul>
+  <% @customers.each do |customer| %>
+    <li>
+      <%= link_to customer.name, new_customer_appointment_path(customer) %>
+    </li>
+  <% end %>
+</ul>
