@@ -1,0 +1,18 @@
+<h1>All Appointments</h1>
+
+<ul>
+  <% @appointments.each do |appointment| %>
+    <li>
+      <%= appointment.customer.name %> has an appointment with <%= appointment.animal.name %> on <%= appointment.scheduled_at %>
+      <%= link_to 'Edit', edit_appointment_path(appointment), class: 'btn btn-primary' %>
+      <%= link_to 'Destroy', appointment_path(appointment), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+    </li>
+  <% end %>
+</ul>
+
+<% if @appointments.any? %>
+  
+  <%= link_to 'Schedule a Cuddle Session', customers_path, class: 'btn btn-primary' %>
+<% end %>
+
+<%= link_to 'Add New Animal', new_animal_path, class: 'btn btn-success' %>
