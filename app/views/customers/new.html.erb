@@ -1,6 +1,6 @@
 <h1>New Customer</h1>
 
-<%= form_with model: @customer, local: true do |form| %>
+<%= form_with(model: [@customer, @appointment], local: true) do |form| %>
   <div>
     <%= form.label :name %>
     <%= form.text_field :name %>

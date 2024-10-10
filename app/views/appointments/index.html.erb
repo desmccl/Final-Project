@@ -3,19 +3,15 @@
 <ul>
   <% @appointments.each do |appointment| %>
     <li>
-      <%= link_to appointment.customer.name %> has an appointment with <%= appointment.animal.name %> on <%= appointment.scheduled_at %>
-      
-</ul>
-<%= link_to 'Edit', edit_customer_appointment_path(appointment.customer, appointment), class: 'btn btn-warning' %>
-      <%= link_to 'Delete', customer_appointment_path(appointment.customer, appointment), 
-                    method: :delete, 
-                    data: { confirm: 'Are you sure?' }, 
-                    class: 'btn btn-danger' %>
+      <%= appointment.customer.name %> has an appointment with <%= appointment.animal.name %> on <%= appointment.scheduled_at %>
+      <%= link_to 'Edit', edit_appointment_path(appointment), class: 'btn btn-primary' %>
+      <%= link_to 'Destroy', appointment_path(appointment), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
     </li>
   <% end %>
+</ul>
+
 <% if @appointments.any? %>
-  <%= link_to 'Schedule a Cuddle Session', new_customer_appointment_path(@appointments.first.customer), class: 'btn btn-primary' %>
-<% else %>
+  
   <%= link_to 'Schedule a Cuddle Session', customers_path, class: 'btn btn-primary' %>
 <% end %>
 

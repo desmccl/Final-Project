@@ -1,0 +1,26 @@
+<%= form_with(model: @appointment) do |form| %>
+  <% if @appointment.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@appointment.errors.count, "error") %> prohibited this appointment from being saved:</h2>
+      <ul>
+        <% @appointment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :customer_id, "Select Customer" %>
+    <%= form.collection_select :customer_id, Customer.all, :id, :name, { prompt: "Choose a customer" } %>
+  </div>
+
+  <div>
+    <%= form.label :animal_id, 'Choose an Animal' %>
+    <%= form.collection_select :animal_id, @animals, :id, :name %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

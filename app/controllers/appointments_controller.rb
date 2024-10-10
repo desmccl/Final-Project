@@ -28,8 +28,13 @@ class AppointmentsController < ApplicationController
     end
 
     def edit
-      @customer = Customer.find(params[:customer_id])
-      @appointment = @customer.appointments.find(params[:id])
+      if params[:customer_id]
+        @customer = Customer.find(params[:customer_id])
+        @appointment = @customer.appointments.find(params[:id])
+      else
+        @appointment = Appointment.find(params[:id])
+        @customer = @appointment.customer
+      end
       @animals = Animal.all
     end
     
