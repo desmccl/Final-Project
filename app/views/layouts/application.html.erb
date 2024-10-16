@@ -9,6 +9,12 @@
     <%= javascript_importmap_tags %>
   </head>
 
+
+    <body>
+
+    <div class="mt-4 p-5 bg-primary text-white rounded banner-background">
+    <h1 class="banner-text">Animal Cuddle Scheduler</h1>
+  </div>
       <div class="container-fluid">
         <% if flash[:notice].present? %>
           <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -24,7 +30,6 @@
         <% end %>
       </div>
 
-    <body>
       <nav class="navbar navbar-expand-sm bg-light">
         <div class="container-fluid">
           <ul class="navbar-nav">
