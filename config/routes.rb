@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   end
 
   resources :animals
-  #resources :appointments, only: [:index, :new, :create, :edit, :update, :destroy]
+ 
   
   
   root 'appointments#index'

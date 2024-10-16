@@ -9,13 +9,15 @@ class CustomersController < ApplicationController
   
     def new
       @customer = Customer.new
+      @appointment = Appointment.new
     end
   
     def create
       @customer = Customer.new(customer_params)
       if @customer.save
-        redirect_to customers_path, notice: 'Customer was created successfully'
+        redirect_to customers_path, notice: 'Customer created successfully'
       else
+        
         render :new
       end
     end

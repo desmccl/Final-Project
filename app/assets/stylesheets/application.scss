@@ -13,3 +13,25 @@
  *= require_tree .
  *= require_self
  */
+
+ @import "bootstrap";
+ 
+
+ :root {
+  --bs-body-bg: #a3f0b5;
+}
+
+ .my_alert {
+    color: red;
+  }
+
+  .banner-background {
+    background-image: url('/assets/ordericon.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    font-family: 'Rounded';
+  }
+  
+  
