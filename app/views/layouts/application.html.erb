@@ -5,12 +5,50 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= yield %>
-  </body>
+      <div class="container-fluid">
+        <% if flash[:notice].present? %>
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <%= flash[:notice] %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        <% end %>
+        <% if flash[:alert].present? %>
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <%= flash[:alert] %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        <% end %>
+      </div>
+
+    <body>
+      <nav class="navbar navbar-expand-sm bg-light">
+        <div class="container-fluid">
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Customers</a>
+              <ul class="dropdown-menu">
+                <% @customers.each do |customer| %>
+                  <li><a class="dropdown-item" href="<%= customer_path(customer) %>"> <%= customer.name %> </a></li>
+                <% end %>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Appointments</a>
+              <ul class="dropdown-menu">
+                <% (@appointments || []).each do |appointment| %>
+                  <li><a class="dropdown-item" href="<%= customer_appointment_path(appointment.customer_id,appointment) %>"><%= "Appointment ##{appointment.id}" %></a></li>
+                <% end %>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    <div class="container-fluid">
+      <%= yield %>
+    </div>
+</body>
 </html>

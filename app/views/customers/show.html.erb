@@ -1,0 +1,36 @@
+
+<%= render @customer %>
+
+<% if @customer.appointments.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Animal Name</th>
+        <th>Scheduled at</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @customer.appointments.each do |appointment| %>
+        <tr>
+          <td><%= appointment.animal.name %></td>
+          <td><%= appointment.scheduled_at %></td>
+          <td>
+            <%= link_to 'Show', customer_appointment_path(appointment.customer_id,appointment) %> |
+            <%= link_to 'Edit', edit_customer_appointment_path(appointment.customer_id,appointment) %> |
+            <%= button_to 'Destroy', customer_appointment_path(appointment.customer_id,appointment), method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No appointments found for this customer.</p>
+<% end %>
+
+<div>
+  <%= link_to "Edit this customer", edit_customer_path(@customer) %> |
+  <%= link_to "Back to customers", customers_path %>
+
+  <%= button_to "Destroy this customer", @customer, method: :delete %>
+</div>

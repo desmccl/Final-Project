@@ -8,6 +8,7 @@ class AppointmentsController < ApplicationController
   
   def index
     @appointments = Appointment.all.includes(:customer, :animal)
+    @customers = Customer.all
   end
   
     def new
