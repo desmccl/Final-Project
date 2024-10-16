@@ -26,12 +26,16 @@
   }
 
   .banner-background {
-    background-image: url('/assets/ordericon.jpg');
-    background-size: cover;
+    background-image: url('/assets/catdog.jpg');
+    background-size: contain;
     background-position: center;
-    background-repeat: no-repeat;
     color: white;
     font-family: 'Rounded';
+  }
+
+  .banner-text {
+    margin-top: -20px;
+    color: black;
   }
   
   
