@@ -1,17 +1,17 @@
 <div id="<%= dom_id appointment %>">
   <p>
     <strong>Full name:</strong>
-    <%= appointment.customer.first_name %>
+    <%= appointment.customer.name %>
   </p>
 
   <p>
     <strong>Animal Name:</strong>
-    <%= appointment.appointment_name %>
+    <%= appointment.animal.name %>
   </p>
 
   <p>
     <strong>Appointment Time:</strong>
-    <%= appointment.appointment_time %>
+    <%= appointment.scheduled_at %>
   </p>
 
 </div>

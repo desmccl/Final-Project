@@ -6,9 +6,9 @@ class AppointmentsController < ApplicationController
   end
 
   
-    def index
-      @appointments = Appointment.all
-    end
+  def index
+    @appointments = Appointment.all.includes(:customer, :animal)
+  end
   
     def new
       @customer = Customer.find(params[:customer_id])
@@ -39,7 +39,9 @@ class AppointmentsController < ApplicationController
     end
     
     def update
+      #debugger
       @customer = Customer.find(params[:customer_id])
+      
       @appointment = @customer.appointments.find(params[:id])
       
       if @appointment.update(appointment_params)
