@@ -8,11 +8,11 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
 
   resources :customers do
-    resources :appointments, only: [:index, :new, :create, :edit, :update, :destroy]
+    resources :appointments
   end
 
   resources :animals
-  resources :appointments, only: [:index, :new, :create, :edit, :update, :destroy]
+  #resources :appointments, only: [:index, :new, :create, :edit, :update, :destroy]
   
   
   root 'appointments#index'
